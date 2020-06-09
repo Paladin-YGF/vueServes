@@ -10,7 +10,7 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "bytes": "^3.1.0",
     "content-disposition": "^0.5.3",
     "content-type": "^1.0.4",
