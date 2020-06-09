@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/login.css"/>
+    <style>
+        select {
+            border: none;
+            /* border: 1px solid #000; */
+            margin-left: 186px;
+        }
+    </style>
+    <title>后台商品编辑页面</title>
+</head>
+<body>
+        <div class="content">
+                <div class="title">
+                    后台商品编辑页面
+                </div>
+                <form action="/admin/shop/update" method="post">
+                    <input type="hidden" value="{{data._id}}" name="_id"/>
+                   <div class="admin">
+                       <label for="admin">
+                           商品名：
+                       </label>
+                       <input style = "margin-left: 50px;"type="text" placeholder="请输入商品名" name="title" value="{{data.title}}"/>
+                   </div> 
+                   <div class="admin">
+                        <label for="admin">
+                            图片路径：
+                        </label>
+                        <input type="text"  class="adminPwd"placeholder="请输入商品图片路径" name="img" value="{{data.img}}"/>
+                    </div>
+                    <div class="admin">
+                        <label for="admin">
+                            图片路径：
+                        </label>
+                        <input type="text"  class="adminPwd"placeholder="请输入商品图片路径" name="path" value="{{data.path}}"/>
+                    </div>
+                    <div class="admin">
+                        <label for="admin">
+                            商品价格
+                        </label>
+                        <input type="text" style="margin-left: 52px;" class="adminPwd"placeholder="请输入商品价格" name="price" value="{{data.price}}"/>
+                    </div>
+                    <div class="admin">
+                            <label for="admin">
+                                商品分类
+                            </label>
+                            <select name="classify" class="form-control" style="margin: 8px 8px 8px 220px; padding: 8px; border-radius: 5px;" id="admin">
+                                {% if data.classify == "手机" %}
+                                <option value="手机" selected>手机</option>
+                                <option value="电脑">电脑</option>
+                                <option value="电视">电视</option>
+                                {% elif data.classify == "电脑" %}
+                                <option value="手机">手机</option>
+                                <option value="电脑" selected>电脑</option>
+                                <option value="电视">电视</option>
+                                {% elif data.classify == "电视" %}
+                                <option value="手机">手机</option>
+                                <option value="电脑">电脑</option>
+                                <option value="电视" selected>电视</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="admin">
+                                <label for="admin">
+                                    商品品种
+                                </label>
+                                <select name="types" class="form-control" style="margin: 8px 8px 8px 220px; padding: 8px; border-radius: 5px;" >
+                                            {% if data.types == "流行" %}
+                                            <option value="推荐">推荐</option>
+                                            <option value="流行" selected>流行</option>
+                                            <option value="新款">新款</option>
+                                            {% elif data.types == "推荐" %}
+                                            <option value="推荐" selected>推荐</option>
+                                            <option value="流行">流行</option>
+                                            <option value="新款">新款</option>
+                                            {% elif data.types == "新款" %}
+                                            <option value="推荐">推荐</option>
+                                            <option value="流行">流行</option>
+                                            <option value="新款" selected>新款</option>
+                                            {% endif %}
+                                    </select>
+                            </div>
+                    <div class="admin" >
+                        <input type="submit" id="btn1" value="修改" style="margin-left: 118px;"/>
+                        <!-- <a href="" class="btn1 btn2">注册</a> -->
+                    </div>
+                </form>
+            </div>
+</body>
+</html>

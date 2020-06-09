@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <title>商品列表管理页面</title>
+    <style>
+        table tr th {
+            text-align: center;
+            line-height: 30px;
+            vertical-align: middle !important;
+            font-size: 16px;
+        }
+
+        table tr td {
+            font-size: 10px;
+            width: 12.5%;
+            vertical-align: middle !important;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .pagination>li {
+            display: inline-block !important;
+            margin: 0 8px;
+        }
+        a.activve {
+          background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="#"><a href="/admin/user/list">用户管理</a></li>
+                        <li class="active"><a href="/admin/shop/list?page=1">商品管理</a></li>
+                        <li><a href="/admin/order/list">订单管理</a></li>
+                        <li><a href="/admin/swiper/list">轮播图商品管理</a></li>
+                        <li><a href="/admin/shopInfo/list">商品详情管理</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../navbar-fixed-top/">用户名： admin</a></li>
+                        <li> <a class="btn btn-primary activve"href="/admin/user/loginout" style="color: rgb(247, 44, 44); box-sizing: border-box; padding: 3px; margin-top: 12px;">退出</a></li>
+
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+        <div
+            style="overflow: hidden; width: 100%; background: #f8f8f8; box-sizing: border-box; padding: 8px; margin-bottom: 15px;">
+            <form class="form-inline" action="/admin/shop/search" method="GET" style="float: left;">
+                <div class="form-group" style="margin: 0 25px 0 15px;">
+                    <label for="exampleInputName2">查询类型：</label>
+                    <select name="classify" class="form-control" style="margin: 8px 8px 8px 15px;">
+                        <option value="手机">手机</option>
+                        <option value="电脑">电脑</option>
+                        <option value="电视">电视</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">查询</button>
+            </form>
+            <a class="btn btn-primary" href="/admin/shop/add" style="float: right; margin-top: 8px;margin-right: 10px;">
+                添加新商品
+            </a>
+        </div>
+        <div style="width: 100%; height: auto; background: #f8f8f8;">
+            <table class="table table-bordered ">
+                <tr>
+                    <th>商品id</th>
+                    <th>商品名</th>
+                    <th>价格</th>
+                    <th>分类</th>
+                    <th>图品路径</th>
+                    <th>产品图片</th>
+                    <th>类型</th>
+                    <th>操作</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{item._id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.price}}</td>
+
+                    <td>{{item.classify}}</td>
+                    <td>{{item.img}}</td>
+                    <td>
+                        <img src={{item.img}} height="80" />
+                    </td>
+                    <td>{{item.types}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="/admin/shop/update/{{item._id}}" style="margin: 15px 0;">编辑</a>
+                        <a class="btn btn-danger" href="/admin/shop/delete/{{item._id}}">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <ul class="pagination" style="width: 100%; text-align: center;">
+            <li id="pre">
+                <a data-classify="{{ classify }}" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            {% for i in range(0, totalPage) %}
+            {% if page === (i+1) %}
+            <li class="active page">
+                <a data-page="{{ i + 1 }}" data-classify="{{ classify }}" id="{{i + 1}}">{{i + 1}}</a>
+            </li>
+            {% else %}
+            <li class="page">
+                <a data-page="{{ i + 1 }}" data-classify="{{ classify }}" id="{{i + 1}}">{{i + 1}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <li id="next">
+                <a data-classify="{{ classify }}" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/public/js/shopList.js"></script>
+</body>
+
+</html>

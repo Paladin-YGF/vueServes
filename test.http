@@ -1,0 +1,32 @@
+@url = http://localhost:4000
+
+###
+POST  {{url}}/admin/swiper/list
+
+###
+GET {{url}}/admin/shop/lists
+
+###
+post {{url}}/user/register
+Content-Type: application/json
+
+{
+    "username": "18312313592",
+    "password": "123456"
+}
+
+###
+POST {{url}}/user/login
+Content-Type: application/json
+
+{
+     "username": "18312313592",
+     "password": "123456"
+}
+
+###
+get {{url}}/user/number
+
+
+GET {{url}}/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNmY1YmQ3ZTg2Y2ZlM2UzODZmN2I0YyIsImlhdCI6MTU4NDQxNTkzN30.D-5avxP28qJePqCRTBg3jh426g9zQuZwbmfzyc3KRFc

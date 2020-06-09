@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/login.css"/>
+    <style>
+        select {
+            border: none;
+            /* border: 1px solid #000; */
+            margin-left: 186px;
+        }
+    </style>
+    <title>后台轮播图编辑页面</title>
+</head>
+<body>
+        <div class="content">
+                <div class="title">
+                    后台轮播图编辑页面
+                </div>
+                <form action="/admin/swiper/update" method="post">
+                    <input type="hidden" value="{{data._id}}" name="_id"/>
+                   <div class="admin">
+                       <label for="admin">
+                           商品名：
+                       </label>
+                       <input style = "margin-left: 50px;"type="text" placeholder="请输入商品名" name="shopName" value="{{data.shopName}}"/>
+                   </div> 
+                   <div class="admin">
+                        <label for="admin">
+                            图片路径：
+                        </label>
+                        <input type="text"  class="adminPwd"placeholder="请输入商品图片路径" name="imgSrc" value="{{data.imgSrc}}"/>
+                    </div>
+                    <div class="admin">
+                        <label for="admin">
+                            跳转路径：
+                        </label>
+                        <input type="text"  class="adminPwd"placeholder="请输入轮播跳转路径" name="path" value="{{data.path}}"/>
+                    </div>
+                    <div class="admin" >
+                        <input type="submit" id="btn1" value="修改" style="margin-left: 118px;"/>
+                        <!-- <a href="" class="btn1 btn2">注册</a> -->
+                    </div>
+                </form>
+            </div>
+</body>
+</html>

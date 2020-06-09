@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/login.css"/>
+    <title>后台登录管理页面</title>
+</head>
+<body>
+    <div class="content">
+        <div class="title">
+            后台登录管理页面
+        </div>
+        <form action="/admin/user/login" method="post">
+           <div class="admin">
+               <label for="admin">
+                   管理员用户名：
+               </label>
+               {% if code == 401 %}
+               <input type="text" placeholder="{{msg}}" name="username"/>
+               {% else %}
+               <input type="text" placeholder="请输入管理员用户名" name="username"/>
+               {% endif %}
+               
+           </div> 
+           <div class="admin">
+                <label for="admin">
+                    管理员密码：
+                </label>
+               {% if code == 401 %}
+               <input type="password"  class="adminPwd" placeholder="{{msg}}" name="password"/>
+               {% else %}
+               <input type="password"  class="adminPwd"placeholder="请输入管理员用户名" name="password"/>
+               {% endif %}
+               
+            </div>
+            <div class="admin">
+                <input type="submit" id="btn1" value="登录"/>
+                <!-- <a href="" class="btn1 btn2">注册</a> -->
+            </div>
+        </form>
+    </div>
+</body>
+</html>

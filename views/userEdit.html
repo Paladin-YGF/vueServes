@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/login.css"/>
+    <style>
+        select {
+            border: none;
+            /* border: 1px solid #000; */
+            margin-left: 186px;
+        }
+    </style>
+    <title>后台用户编辑页面</title>
+</head>
+<body>
+        <div class="content">
+                <div class="title">
+                    后台用户编辑页面
+                </div>
+                <form action="/admin/user/update" method="post" enctype=”multipart/form-data”>
+                    <input type="hidden" value="{{data._id}}" name="_id"/>
+                   <div class="admin">
+                       <label for="admin">
+                           用户名：
+                       </label>
+                       <input style = "margin-left: 50px;"type="text" placeholder="请输入管理员用户名" name="username" value="{{data.username}}"  readonly/>
+                   </div> 
+                   <div class="admin">
+                        <label for="admin">
+                            用户密码：
+                        </label>
+                        <input type="password"  class="adminPwd"placeholder="请输入管理员用户名" name="password" value="{{data.password}}" readonly/>
+                    </div>
+                    <div class="admin">
+                            <label for="admin">
+                                用户是否禁用：
+                            </label>
+                            <select name="disable">
+                                {% if data.disable %}
+                                    <option value="true" selected>true</option>
+                                    <option value="false" >false</option>
+                                {% else %}
+                                    <option value="true" >true</option>
+                                    <option value="false" selected>false</option>
+                                {% endif %}
+                            </select> 
+                        </div>
+                    <!-- <input type="file" name="file"/> -->
+                    <div class="admin">
+                        <input type="submit" id="btn1" value="编辑"/>
+                        <!-- <a href="" class="btn1 btn2">注册</a> -->
+                    </div>
+                </form>
+            </div>
+</body>
+</html>
